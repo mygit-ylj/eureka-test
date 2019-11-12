@@ -1,0 +1,30 @@
+spring:
+  application:
+    name: order-service
+server:
+  port: 9091
+eureka:
+  instance:
+    hostname: localhost
+  client:
+    service-url:
+      defaultZone: http://localhost:10086/eureka/
+    fetch-registry: true
+#hystrix:
+#  command:
+#    default:
+#      execution:
+#        isolation:
+#          thread:
+#            timeoutInMilliseconds: 5000
+#feign:
+#  hystrix:
+#    enabled: true  #开启Feign的熔断功能
+#  client:
+#    config:
+#      default:
+#        connectTimeout: 5000
+#        readTimeout: 5000
+##结合hystrix dashboard控制面板时，通过HTTP实现一个actuator端点，它需要被启用并公开，默认是只公开heath和info两个端点
+#management:
+#  context-path: /

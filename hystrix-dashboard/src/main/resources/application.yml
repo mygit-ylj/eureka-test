@@ -1,0 +1,10 @@
+spring:
+  application:
+    name: hystrix-dashboard
+server:
+  port: 8085
+eureka:
+  client:
+    fetch-registry: false
+    service-url:
+      defaultZnoe: http://localhost:10086/eureka/

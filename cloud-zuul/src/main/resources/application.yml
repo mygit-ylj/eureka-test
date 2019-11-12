@@ -1,0 +1,43 @@
+spring:
+  application:
+    name: cloud-zuul
+server:
+  port: 10000
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:10086/eureka
+#zuul:
+#  order:
+#    serviceId: user-service
+#    path: /user-service/**
+#    strip-prefix: false
+zuul:
+  prefix: /api
+  routes:
+    order-service: /os/**
+    file-routes:
+      path: /fileUpload/**
+      serviceId: file-upload
+      strip-prefix: true
+    user_routes:
+      url: http://localhost:8084/
+      path: /us/**
+      strip-prefix: true
+  #    user-service: /us/**
+  ignored-services: '*'
+  ratelimit:
+    key-prefix: os #按粒度拆分的临时变量key前缀
+    enabled: true #启用开关
+    behind-proxy: true #表示代理之后
+    default-policy: #全局限流策略，可单独细化到服务粒度
+      limit: 2 #在一个单位时间窗口的请求数量
+      quota: 1000 #在一个单位时间窗口的请求时间限制
+      refresh-interval: 10 #单位时间窗口
+      type: url
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+

@@ -1,0 +1,16 @@
+spring:
+#  cloud:
+#    consul:
+#      host: localhost
+#      port: 8500
+#      discovery:
+#        service-name: user-service
+  application:
+    name: user-service
+server:
+  port: 8084
+eureka:
+  client:
+    fetch-registry: false
+    service-url:
+      defaultZone: http://localhost:10086/eureka/

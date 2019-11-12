@@ -1,0 +1,20 @@
+spring:
+  application:
+    name: cloud-gaetway
+  cloud:
+    gateway:
+      routes:
+        - id: user_route
+          uri: lb://user-service
+          order: 0
+          predicates:
+            - Path=/api/user_service/**
+            - Header=token,[0-5]
+          filters:
+            - StripPrefix=2
+server:
+  port: 10010
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:10086/eureka

@@ -1,0 +1,12 @@
+spring:
+  application:
+    name: file-upload
+server:
+  port: 9096
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:10086/eureka
+file:
+  upload:
+    dir: D:\pic
