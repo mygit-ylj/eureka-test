@@ -9,4 +9,4 @@ eureka:
       defaultZone: http://localhost:10086/eureka
 file:
   upload:
-    dir: D:\pic
+    dir: D:\pic\ylj
